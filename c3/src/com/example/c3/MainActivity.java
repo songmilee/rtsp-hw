@@ -1,0 +1,60 @@
+package com.example.c3;
+
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends Activity {
+	EditText edt_id;
+	String id;
+	Button startbtn;
+	Socket socket;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		edt_id=(EditText)findViewById(R.id.id);
+		
+		startbtn=(Button)findViewById(R.id.startbtn);
+		startbtn.setOnClickListener(new ClickHandler());
+		
+	}
+	class ClickHandler implements OnClickListener{
+		public void onClick(View v){
+			Intent i=new Intent(getApplicationContext(), ListActivity.class);
+			id=edt_id.getText().toString();
+			i.putExtra("id", id);
+			startActivity(i);
+		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" >
+
+     <net.majorkernelpanic.streaming.gl.SurfaceView
+         android:id="@+id/new_preview"
+         android:layout_width="match_parent"
+    	 android:layout_height="150dp"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentTop="true" />
+
+     <VideoView
+         android:id="@+id/anotherview"
+         android:layout_width="match_parent"
+         android:layout_height="150dp"
+         android:layout_alignParentBottom="true"
+         android:layout_alignParentLeft="true"
+         android:layout_below="@+id/mine"
+         android:layout_marginBottom="80dp" />
+
+     <Button
+         android:id="@+id/mine"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentRight="true"
+         android:layout_below="@+id/new_preview"
+         android:text="Button" />
+
+     <Button
+         android:id="@+id/strVideo"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_alignParentRight="true"
+         android:layout_marginBottom="20dp"
+         android:text="start" />
+    
+</RelativeLayout>
