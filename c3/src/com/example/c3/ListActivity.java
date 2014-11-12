@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore.Video;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -39,16 +40,16 @@ public class ListActivity extends Activity {
 		super.onCreate(savedInstaceState);
 		setContentView(R.layout.activity_list);
 		
-		//ID¸¦ ¹Ş¾Æ¿Â´Ù.
+		//IDë¥¼ ë°›ì•„ì˜¨ë‹¤.
 		Intent i=getIntent();
 		id=i.getStringExtra("id");
 		
-		//ListView ºÎºĞ
+		//ListView ë¶€ë¶„
 		list =new ArrayList<String>();
 		adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
 		listView=(ListView)findViewById(R.id.listView1);
 		listView.setAdapter(adapter);
-		//ListView Item Å¬¸¯ ºÎºĞ
+		//ListView Item í´ë¦­ ë¶€ë¶„
 		listView.setOnItemClickListener(new OnItemClickListener(){
 
 			//listview click listener
@@ -58,14 +59,14 @@ public class ListActivity extends Activity {
 				String clientinfo=(String)parent.getItemAtPosition(position);
 				String[] token=clientinfo.split(":");
 				Log.i("token : ", token[0]+token[1]+token[2]);
-				Intent i=new Intent(getApplicationContext(), VideoActivity.class);
+				Intent i=new Intent(getApplicationContext(), FragMain.class);
 				i.putExtra("clientinformation", clientinfo);
 				startActivity(i);
 			}
 			
 		});
 		
-		//Refresh ¹öÆ° ºÎºĞ
+		//Refresh ë²„íŠ¼ ë¶€ë¶„
 		refresh=(Button)findViewById(R.id.refreshBtn);
 		refresh.setOnClickListener(new clickHandler());
 		
@@ -74,7 +75,7 @@ public class ListActivity extends Activity {
 		
 	}
 	
-	//µÚ·Î°¡±â ¹öÆ°À» ´­·¶À»¶§ _delete ¸Ş½ÃÁö¸¦ º¸³» Ã³¸®
+	//ë’¤ë¡œê°€ê¸° ë²„íŠ¼ì„ ëˆŒë €ì„ë•Œ _delete ë©”ì‹œì§€ë¥¼ ë³´ë‚´ ì²˜ë¦¬
 	public void onBackPressed(){
 		cpw.println("_delete"+"="+id+":"+socket.getLocalAddress().getHostAddress()+":"+port);
 		finish();
@@ -106,7 +107,7 @@ public class ListActivity extends Activity {
 		}
 	}
 	
-	//refresh ÇØÁØ´Ù.
+	//refresh í•´ì¤€ë‹¤.
 	class clickHandler implements OnClickListener{
 		@Override
 		public void onClick(View arg0) {
